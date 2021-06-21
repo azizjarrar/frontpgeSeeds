@@ -1,0 +1,65 @@
+.TableContainer{
+    position: sticky;
+    height: 90%;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.imageDesign{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    img{
+        height: 150px;
+        width: 150px;
+    }
+}
+.Modal{
+    position: fixed;
+    height: calc(100% - 69px);
+    width: calc(100% - 250px);
+    background-color: rgba(0,0,0,0.8);
+    top: 69px;
+    right: 0;
+    z-index: 15616916156156;
+    .close{
+        position: absolute;
+        top: 80px;
+        right: 50px;
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.5s;
+        z-index: 1561615165561;
+        
+        &:hover{
+            height: 60px;
+            width: 60px;
+        }
+        &::after{
+            content: "";
+            width: 3px;
+            height: 25px;
+            background-color: black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%) rotate(45deg);
+    
+        }
+        &::before{
+            content: "";
+            width: 3px;
+            height: 25px;
+            background-color: black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            
+            transform: translate(-50%,-50%) rotate(-45deg);
+        }
+    }
+}

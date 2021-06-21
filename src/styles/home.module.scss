@@ -1,0 +1,30 @@
+.container{
+    position:relative;
+    height: calc(100vh - 80px);
+    width: 100%;
+    left:0px;
+    overflow-y: scroll;
+    background-color: white;
+}
+.seedsContainer{
+    position: relative;
+    width: 100%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 20px;
+    margin-top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: 30px;
+    flex-wrap: wrap;
+    display: flex;
+    padding: 50px;
+}
+.Titles{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 80px;
+}
+
+

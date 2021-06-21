@@ -1,0 +1,63 @@
+.container{
+    position: relative;
+    display: flex;
+    padding: 15px;
+    width: 50%;
+    &::after{
+        content: "";
+        width: 80%;
+        height: 2px;
+        background-color: #006935    ;
+        bottom: 0px;
+        position: absolute;
+        
+    }
+}
+.planteImage{
+    img{
+        height: auto;
+        max-width: 300px;
+    }
+
+}
+.nameAndDescription{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    h1{
+        align-self: flex-start;
+    }
+}
+button{
+    padding: 10px;
+    outline: none;
+    background-color: #006935;
+    border: none;
+    color:white;
+    font-weight: bold;
+  
+    &:hover{
+        background-color: #009b4d;
+
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .container{
+
+        flex-direction: column;
+        width: 50%;
+        align-items: center;
+        justify-content: space-around;
+        &::after{
+            content: "";
+            width: 80%;
+            height: 2px;
+            background-color: #006935    ;
+            bottom: 0px;
+            position: absolute;
+            
+        }
+    }
+  }

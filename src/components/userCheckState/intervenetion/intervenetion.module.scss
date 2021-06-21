@@ -1,0 +1,32 @@
+.container{
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 20px;
+    margin-top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: 30px;
+}
+.header{
+    position: relative;
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formContainer{
+    width: 70%;
+    padding: 15px;
+    position: relative;
+    margin:  0 auto;
+}
+.table{
+    width: 80%;
+    position: relative;
+    margin:  0 auto;
+}

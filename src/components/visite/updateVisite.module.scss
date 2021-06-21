@@ -1,0 +1,49 @@
+.container{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 1565616;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formContainer{
+    position: relative;
+    height: 500px;
+    width: 400px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 25px;
+    input{
+        margin: 30px 0px;
+    }
+    button{
+        width: 100%;
+    }
+}
+.header{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1{
+
+    }
+}
+.selectContainer {
+        z-index: 99999999999999999999;
+        font-size: 1.1rem;
+        height: 45px;
+        position: relative; 
+    
+}
+.selectcss{
+   width: 349px;
+    height: 39px;
+    border-color: #ced4da;
+    border-radius: 5px;
+    margin-top: 1px;
+    outline: none;
+}
+

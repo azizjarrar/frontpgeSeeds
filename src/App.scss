@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+th{
+  font-family: 'Roboto', sans-serif !important;
+
+}
+tr{
+  font-family: 'Roboto', sans-serif !important;
+}
+td{
+  font-family: 'Roboto', sans-serif !important;
+
+}
+li{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.0rem;
+  font-weight: 600;
+}
+div{
+  font-family: 'Roboto', sans-serif;
+}
+
+.users,
+.staff,
+.demandes {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+
+#root{
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('./background.jpg');
+  background-color: rgba(0, 0, 0, 0.5);
+
+}
+body::after{
+  content: "";
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+
+
+svg{
+  color: black !important;
+}
+
+.menu-bars{
+  svg{
+    color: white !important;
+
+  }
+}
+
+
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+.card-container.card {
+  max-width: 350px !important;
+  padding: 40px 40px;
+}
+
+.card {
+  background-color: #f7f7f7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.submit-form {
+  max-width: 300px;
+  margin: auto;
+}
+
+.edit-form {
+  max-width: 300px;
+  margin: auto;
+}
+.btn-primary {
+  margin-top: 20px;
+
+}
+
+.btn-primary  span{
+  margin: 0 !important;
+
+}
+.containerallApp{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.containermt3{
+  position: relative;
+  height: calc(100% - 80px);
+  width: calc(100% - 250px);
+  margin-left: 250px;
+  top: 80px;
+}
+
+
+.login{
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 161561561561;
+}
+.css-2b097c-container{
+  height: 45px;
+}
+.css-yk16xz-control{
+  height: 45px;
+}
+.css-g1d714-ValueContainer{
+  position: relative;
+  height: 45px;
+}
+.css-b8ldur-Input{
+  height: 45px;
+}
+.css-1wa3eu0-placeholder{
+  top: 50% !important;
+}
+.css-1uccc91-singleValue{
+  top: 90% !important;
+}
+
+.nav-menu{
+  position: absolute;
+  height: calc(100vh - 80px) !important;
+  margin-top: 80px;
+}
+.sidenavbarContainere{
+  position: fixed;
+  width: 100%;
+  z-index: 6165156;
+  
+
+}
+.sidenavbarContainere li{
+  height: 6.0%;
+}
+
+.nav-link{
+  position: relative;
+  transition: 0.5s;
+  &::after{
+    content: "";
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    transition: 0.5s;
+  }
+  &:hover{
+    &::after{
+      left: 0%;
+
+      background-color: black;
+
+    }
+
+
+  }
+
+ 
+}
+.ParticlesContainer{
+  pointer-events: none;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.nav-text{
+  position: relative;
+  transition: 0.5s;
+  &::after{
+    content: "";
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    transition: 0.5s;
+  }
+  &:hover{
+    &::after{
+      left: 0%;
+
+      background-color: black;
+
+    }
+
+
+  }
+}
+.sidenavbarCss{
+  //margin-top: 80px;
+  margin-top: 10px;
+}
+.MuiTableHead-root{
+  th{
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: black;
+  }
+}
+.selectinsideAddDemmande{
+  width: 260px !important;
+}
