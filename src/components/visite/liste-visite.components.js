@@ -9,81 +9,72 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import UpdateVisite from './updateVisite'
+import {getvisites,deletevisites} from '../../services/visite-service'
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
 });
 
-function createData(Date, Description, Etat) {
-  return { Date, Description, Etat };
-}
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24),
-  createData('Ice cream sandwich', 237, 9.0, 37),
-  createData('Eclair', 262, 16.0, 24),
-  createData('Cupcake', 305, 3.7, 67),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('Cupcake', 305, 3.7, 67),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('Cupcake', 305, 3.7, 67),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('Cupcake', 305, 3.7, 67),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('Gingerbread', 356, 16.0, 49),
 
-  createData('Cupcake', 305, 3.7, 67),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('Cupcake', 305, 3.7, 67),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('Cupcake', 305, 3.7, 67),
-  createData('Gingerbread', 356, 16.0, 49),
-  createData('aziz', 356, 16.0, 49),
-
-];
 
 const VisitesList =()=> {
   const [modal,setModal]=React.useState(false)
+  const [data,setData]=React.useState([])
+  const [modalData,setModalData]=React.useState({})
+
   const classes = useStyles();
-    const openModalUpdate=()=>{
+    const openModalUpdate=(dataUpdate)=>{
+      setModalData(dataUpdate)
+
       setModal(e=>!e)
     }
 
+    React.useEffect(()=>{
+      getvisites().then(data=>{
+        setData(data.data)
+      })
+    },[])
 
+    const DelteData=(id)=>{
+      deletevisites(id).then(data=>{
+        getvisites().then(data=>{
+          setData(data.data)
+        })
+      })
+    }
 
   return(<div className={style.TableContainer}>
           {modal&&<div className={style.Modal}>
           <div className={style.close} onClick={()=>setModal(e=>!e)}></div>
 
-          <UpdateVisite />
+          <UpdateVisite  {...modalData}/>
         </div>}
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
+            <TableCell align="left">id</TableCell>
             <TableCell align="left">Date</TableCell>
             <TableCell align="left">Description</TableCell>
             <TableCell align="left">Etat</TableCell>
             <TableCell align="left">Update</TableCell>
+            <TableCell align="left">delete</TableCell>
 
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {data.map((row) => (
             <TableRow key={row.name}>
+              <TableCell align="left">{row.id}</TableCell>
+              <TableCell align="left">{row.date.slice(0,10)}</TableCell>
+              <TableCell align="left">{row.description}</TableCell>
+              <TableCell align="left">{row.etat}</TableCell>
+              <TableCell align="left"><button className={style.update} onClick={()=>openModalUpdate({id:row.id,date:row.date.slice(0,10),description:row.description,etat:row.etat})}>Update</button></TableCell>
+              <TableCell align="left"><button className={style.delte} style={{backgroundColor:"#dc3545"}} onClick={()=>DelteData(row.id)} >Delete</button></TableCell>
 
-              <TableCell align="left">{row.Date}</TableCell>
-              <TableCell align="left">{row.Description}</TableCell>
-              <TableCell align="left">{row.Etat}</TableCell>
-              <TableCell align="left"><button className={style.update} onClick={()=>openModalUpdate()}>Update</button></TableCell>
             </TableRow>
           ))}
         </TableBody>

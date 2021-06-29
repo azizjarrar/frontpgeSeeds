@@ -2,46 +2,53 @@ import React from "react";
 import style from './addstaf.module.scss'
 import Input from "react-validation/build/input";
 import Form from "react-validation/build/form";
-import Select from 'react-select'
-import { useForm } from 'react-hook-form';
 
+import {addStaf} from '../../services/staff-service'
 
 
  const AddStaff=()=> {
   const [options,setOptions]=React.useState([{value:"Aa","label":"admin"},{value:"ahmed","label":"ahmed"}])
-  const {register,handleSubmit,errors,watch}=useForm()
+  const [stafData,setStafData]=React.useState({})
 
 
-  const required = value => {
-    if (!value) {
-      return (
-        <div className="alert alert-danger" role="alert">
-          This field is required!
-        </div>
-      );
-    }
-  };
   const savedata=(e)=>{
     const {name,value}=e.target
-    console.log(name,value)
+    setStafData(e=>{
+      return {...e,[name]:value}
+    })
   }
   const submitData=(e)=>{
     e.preventDefault();
 
+  }
+  const addStaff=()=>{
+    addStaf(stafData).then(data=>{
+      console.log(data)
+    })
+  }
+  const selectChangeHandler=(dataSelect)=>{
+  
+    setStafData(e=>{
+      return {...e,"role":dataSelect}
+    })
   }
     return (
         <div className={style.container}>
             <div className={style.formContainer}>
               <div className={style.header}><h1>Add Staff</h1></div>
             <Form onSubmit={(e)=>submitData(e)} >
-              <Input type="text"   onChange={(e)=>savedata(e)} className="form-control" name="username" placeHolder="username" name="username"/>
-              <Input type="text"   onChange={(e)=>savedata(e)} className="form-control" name="matricule" placeHolder="matricule" name="matricule"/>
-              <Input type="text"   onChange={(e)=>savedata(e)} className="form-control" name="email" placeHolder="email" name="email"/>
-              <Input type="text"   onChange={(e)=>savedata(e)} className="form-control" name="password" placeHolder="password" name="password"/>
+              <Input type="text"    onChange={(e)=>savedata(e)} className="form-control" name="username" placeHolder="username" name="username"/>
+              <Input type="text"    onChange={(e)=>savedata(e)} className="form-control" name="matricule" placeHolder="matricule" name="matricule"/>
+              <Input type="text"    onChange={(e)=>savedata(e)} className="form-control" name="email" placeHolder="email" name="email"/>
+              <Input type="text"    onChange={(e)=>savedata(e)} className="form-control" name="password" placeHolder="password" name="password"/>
               <div className={style.selectContainer}>
-              <Select  instanceId={"idunique"} id={"gzegzegze"} options={options} />
+              <select onChange={(e)=>{selectChangeHandler(e.target.value)}} className={style.selectcss}>
+                <option value="AdminMet">AdminMet</option>
+                <option value="Chercheur">Chercheur</option>
+   
+            </select>
               </div>
-              <button className="btn btn-primary btn-block">S A V E</button>
+              <button onClick={(e)=>addStaff()} className="btn btn-primary btn-block">S A V E</button>
 
                                           
              </Form>

@@ -1,28 +1,25 @@
-import axios from 'axios';
 
-const VISITE_API_BASE_URL = "http://localhost:8080/api/visites";
 
-class VisiteDataService {
 
-  getVisites(){
-    return axios.get(VISITE_API_BASE_URL);
-  }
+import axios from "axios";
 
-  createVisite(visite){
-      return axios.post(VISITE_API_BASE_URL, visite);
-  }
+const API_URL = "http://localhost:8080/api/visites/";
+//    return axiosApiInstance.post('/postnrmltopic/getSelectedTopicPosts',{...data},{ headers: {Authorization: 'Bearer ' + token }})
 
-  getVisiteById(visiteId){
-      return axios.get(VISITE_API_BASE_URL + '/' + visiteId);
-  }
-
-  updateVisite(visite, visiteId){
-      return axios.put( VISITE_API_BASE_URL + '/' + visiteId, visite);
-  }
-
-  deleteVisite(visiteId){
-      return axios.delete( VISITE_API_BASE_URL + '/' + visiteId);
-  }
-  }
-
-export default new VisiteDataService();
+const getvisites=(data)=>{
+  return axios.get(API_URL+"visites")
+}
+const addvisites=(data)=>{
+  return axios.post(API_URL+"visites",{...data})
+}
+const updavisites=(data,id)=>{
+  return axios.put(API_URL+"visites/"+id,{...data})
+}
+const deletevisites=(id)=>{
+  return axios.delete(API_URL+"visites/"+id)
+}
+/*
+const deleteComments=(data)=>{
+  return axios.post(API_URL+"deleteComments",{...data},{ headers: {Authorization: 'Bearer ' + localStorage.getItem("token") }})
+}*/
+export {getvisites,addvisites,updavisites,deletevisites};

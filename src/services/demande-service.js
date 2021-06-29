@@ -1,27 +1,26 @@
-import axios from 'axios';
 
-const DEMANDE_API_BASE_URL = "http://localhost:8080/api/demandes";
 
-class DemandeDataService {
 
-  getDemandes(){
-    return axios.get(DEMANDE_API_BASE_URL);
-  }
+import axios from "axios";
 
-  createDemande(demande){
-      return axios.post(DEMANDE_API_BASE_URL, demande);
-  }
+const API_URL = "http://localhost:8080/api/demandes/";
+//    return axiosApiInstance.post('/postnrmltopic/getSelectedTopicPosts',{...data},{ headers: {Authorization: 'Bearer ' + token }})
 
-  getDemandeById(demandeId){
-      return axios.get(DEMANDE_API_BASE_URL + '/' + demandeId);
-  }
+const getDemandes=(data)=>{
+  return axios.get(API_URL+"demandes")
+}
+const addDemandes=(data)=>{
+  return axios.post(API_URL+"demandes",{...data})
+}
+const updateDemandes=(data,id)=>{
+  return axios.post(API_URL+"demandes/"+id,{...data})
+}
+const DeleteDemandes=(id)=>{
+  return axios.delete(API_URL+"demandes/"+id)
+}
 
-  updateDemande(demande, demandeId){
-      return axios.put( DEMANDE_API_BASE_URL + '/' + demandeId, demande);
-  }
-
-  deleteDemande(demandeId){
-      return axios.delete( DEMANDE_API_BASE_URL + '/' + demandeId);
-  }
-  }
-export default new DemandeDataService();
+/*
+const deleteComments=(data)=>{
+  return axios.post(API_URL+"deleteComments",{...data},{ headers: {Authorization: 'Bearer ' + localStorage.getItem("token") }})
+}*/
+export {getDemandes,addDemandes,updateDemandes,DeleteDemandes};

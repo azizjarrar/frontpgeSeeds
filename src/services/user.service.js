@@ -1,32 +1,25 @@
-import axios from 'axios';
-import authHeader from './auth-header';
-
-const API_URL = 'http://localhost:8080/api/test/';
-const API_URL_USERS = 'http://localhost:8080/api/';
-
-class UserService {
-  getPublicContent() {
-    return axios.get(API_URL + 'all');
-  }
-
-  getUserBoard() {
-    return axios.get(API_URL + 'user', { headers: authHeader() });
-  }
-
-  getModeratorBoard() {
-    return axios.get(API_URL + 'mod', { headers: authHeader() });
-  }
-
-  getAdminBoard() {
-    return axios.get(API_URL + 'admin', { headers: authHeader() 
-    });
-  }
 
 
-  /*******************************/
-  getUsers() {
-    return axios.get(API_URL_USERS + 'users', { headers: authHeader() });
-  }
+
+import axios from "axios";
+
+const API_URL = "http://localhost:8080/api/users/";
+//    return axiosApiInstance.post('/postnrmltopic/getSelectedTopicPosts',{...data},{ headers: {Authorization: 'Bearer ' + token }})
+
+const getUsers=(data)=>{
+  return axios.get(API_URL+"users")
 }
-
-export default new UserService();
+const getUserById=(id)=>{
+  return axios.get(API_URL+"users/"+id)
+}
+const updateUser=(data)=>{
+  return axios.get(API_URL+"users")
+}
+const DelteUser=(data)=>{
+  return axios.get(API_URL+"users")
+}
+/*
+const deleteComments=(data)=>{
+  return axios.post(API_URL+"deleteComments",{...data},{ headers: {Authorization: 'Bearer ' + localStorage.getItem("token") }})
+}*/
+export {getUsers,getUserById,updateUser,DelteUser};

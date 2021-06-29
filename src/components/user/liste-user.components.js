@@ -8,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import {getUsers} from '../../services/user.service'
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -19,19 +19,17 @@ function createData(id,username, email) {
   return { id,username, email };
 }
 
-const rows = [
-  createData("1",'ahmed', "ali"),
-  createData("1",'morad', "lekrim"),
-  createData("1",'abed lahmid', "ben salah"),
-  createData("1",'ahmed', "ali"),
-  createData("1",'morad', "lekrim"),
 
-
-];
 
  const  VisitesListUser =()=> {
   const classes = useStyles();
-
+  const [users,setUser]=React.useState([])
+  React.useEffect(()=>{
+    getUsers().then(data=>{
+      setUser(data.data)
+      
+    })
+  },[])
 
 
   return(<div className={style.TableContainer}>
@@ -46,7 +44,7 @@ const rows = [
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {users.map((row) => (
             <TableRow key={row.name}>
               <TableCell align="left">{row.id}</TableCell>
               <TableCell align="left">{row.username}</TableCell>

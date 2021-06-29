@@ -54,7 +54,9 @@ export default class Login extends Component {
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.username, this.state.password).then(
         (data) => {
+
           localStorage.setItem("role",data.roles[0])
+          localStorage.setItem("token",data.accessToken)
           this.props.history.push("/");
          window.location.reload();
         },

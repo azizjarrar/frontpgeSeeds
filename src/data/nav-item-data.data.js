@@ -15,7 +15,6 @@ export const NavItems = [
             {title: "Add Staff", path: "/addstaff", icon:<AiIcons.AiOutlineUserAdd />, cName: 'nav-text'},
             {title: "List Staffs", path: "/ListStaffs", icon:<CgIcons.CgUserList />, cName: 'nav-text'},
 
-            {title: "Add Demande", path: "/addDemande", icon: <GiIcons.GiNuclearPlant />, cName: 'nav-text'},
             {title: "List Demandes", path: "ListDemande", icon: <BsIcons.BsListCheck />, cName: 'nav-text'},
 
             {title: "Add Visite", path: "/addVisite", icon:<IoIcons.IoMdAddCircle />, cName: 'nav-text'},
@@ -25,8 +24,8 @@ export const NavItems = [
             {title: "List Plantes", path: "listPlantes", icon: <BsIcons.BsListCheck />, cName: 'nav-text'},
             {title: "List Interventions", path: "listInterventions", icon: <BsIcons.BsListCheck />, cName: 'nav-text'},
 
-            {title: "Contact Admin", path: "#", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
-            {title: "Contact AdminMet", path: "#", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
-            {title: "Contact Chercheur", path: "#", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
-            {title: "Contact User", path: "#", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
+            {title: "Contact Admin", path: "/Contact/Admin", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
+            {title: "Contact AdminMet", path: "/Contact/AdminMet", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
+            {title: "Contact Chercheur", path: "/Contact/Chercheur", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
+            {title: "Contact User", path: "/Contact/User", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
 ]

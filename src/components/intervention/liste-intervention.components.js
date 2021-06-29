@@ -8,30 +8,34 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import {getinterventions,deleteinterventions} from '../../services/intervention-service'
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
 });
 
-function createData(id, description) {
-  return {  id, description  };
-}
-
-const rows = [
-  createData('Frozen yoghurt', "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, whe"),
-  createData('Ice cream sandwich', "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, wheLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, whe"),
-  createData('Eclair', " Ipsum is simply dummy text of the printing and typesetting industry. Lorem "),
 
 
-];
+
 
  const  ListeIntervention =()=> {
+   const [data,setData]=React.useState([])
   const classes = useStyles();
+  React.useState(()=>{
+    getinterventions().then(res=>{
+      console.log(res.data)
+      setData(res.data)
+    })
+  },[])
 
-
-
+  const DelteData=(id)=>{
+    deleteinterventions(id).then(data=>{
+      getinterventions().then(res=>{
+        setData(res.data)
+      })
+    })
+  }
   return(<div className={style.TableContainer}>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
@@ -43,11 +47,12 @@ const rows = [
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {data.map((row) => (
             <TableRow key={row.name}>
 
               <TableCell align="left">{row.id}</TableCell>
               <TableCell align="left">{row.description}</TableCell>
+              <TableCell align="left"><button className={style.delte} style={{backgroundColor:"#dc3545"}} onClick={()=>DelteData(row.id)} >Delete</button></TableCell>
 
             </TableRow>
           ))}

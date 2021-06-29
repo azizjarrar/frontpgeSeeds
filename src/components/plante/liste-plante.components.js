@@ -9,43 +9,49 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import UpdatePlante from './updatePlante'
+import {getplantes,deletePlante} from '../../services/plante-service'
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
 });
 
-function createData(nomPlante, description, imageUrl,type) {
-  return { nomPlante, description, imageUrl,type };
-}
 
-const rows = [
-  createData('Frozen yoghurt', 159,"https://images.theconversation.com/files/307156/original/file-20191216-124022-r2addy.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=900.0&fit=crop", 6.0),
-  createData('Ice cream sandwich', 237,"https://images.theconversation.com/files/307156/original/file-20191216-124022-r2addy.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=900.0&fit=crop", 9.0),
-  createData('Eclair', 262,"https://images.theconversation.com/files/307156/original/file-20191216-124022-r2addy.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=900.0&fit=crop", 16.0),
-
-
-];
 
  const  ListePlanet =()=> {
   const [modal,setModal]=React.useState(false)
+  const [data,setData]=React.useState([])
+  const [modalData,setModalData]=React.useState({})
+
   const classes = useStyles();
-    const openModalUpdate=()=>{
+    const openModalUpdate=(updateData)=>{
+      setModalData(updateData)
       setModal(e=>!e)
     }
+    React.useEffect(()=>{
+      getplantes().then(res=>{
+        setData(res.data)
+      })
+    },[])
 
-
-
+    const DelteData=(id)=>{
+      deletePlante(id).then(data=>{
+        getplantes().then(res=>{
+          setData(res.data)
+        })
+      })
+    }
   return(<div className={style.TableContainer}>
         {modal&&<div className={style.Modal}>
         <div className={style.close} onClick={()=>setModal(e=>!e)}></div>
 
-          <UpdatePlante />
+          <UpdatePlante {...modalData}/>
         </div>}
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
+          <TableCell align="left">id</TableCell>
             <TableCell align="left">nomPlante</TableCell>
             <TableCell align="left">description</TableCell>
             <TableCell align="left">image</TableCell>
@@ -54,14 +60,15 @@ const rows = [
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {data.map((row) => (
             <TableRow key={row.name}>
-
+              <TableCell align="left">{row.id}</TableCell>
               <TableCell align="left">{row.nomPlante}</TableCell>
               <TableCell align="left">{row.description}</TableCell>
-              <TableCell align="left"><div className={style.imageDesign}><img src={row.imageUrl}/></div></TableCell>
+              <TableCell align="left"><div className={style.imageDesign}><img src={row.image}/></div></TableCell>
               <TableCell align="left">{row.type}</TableCell>
-              <TableCell align="left"><button className={style.update} onClick={()=>openModalUpdate()}>Update</button></TableCell>
+              <TableCell align="left"><button className={style.update} onClick={()=>openModalUpdate({id:row.id,nomPlante:row.nomPlante,description:row.description,image:row.image,type:row.type})}>Update</button></TableCell>
+              <TableCell align="left"><button className={style.delte} style={{backgroundColor:"#dc3545"}} onClick={()=>DelteData(row.id)} >Delete</button></TableCell>
 
 
             </TableRow>

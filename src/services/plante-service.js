@@ -1,28 +1,26 @@
-import axios from 'axios';
 
-const PLANTE_API_BASE_URL = "http://localhost:8080/api/plantes";
 
-class PlanteDataService {
 
-  getPlantes(){
-    return axios.get(PLANTE_API_BASE_URL);
-  }
+import axios from "axios";
 
-  createPlante(plante){
-      return axios.post(PLANTE_API_BASE_URL, plante);
-  }
+const API_URL = "http://localhost:8080/api/";
+//    return axiosApiInstance.post('/postnrmltopic/getSelectedTopicPosts',{...data},{ headers: {Authorization: 'Bearer ' + token }})
 
-  getPlanteById(planteId){
-      return axios.get(PLANTE_API_BASE_URL + '/' + planteId);
-  }
+const getplantes=(data)=>{
+  return axios.get(API_URL+"plantes")
+}
+const addplantes=(data)=>{
+  return axios.post(API_URL+"plantes",{...data})
+}
+const updateplantes=(data,id)=>{
+  return axios.put(API_URL+"plantes/"+id,{...data})
+}
+const deletePlante=(id)=>{
+  return axios.delete(API_URL+"plantes/"+id)
+}
 
-  updatePlante(plante, planteId){
-      return axios.put( PLANTE_API_BASE_URL + '/' + planteId, plante);
-  }
-
-  deletePlante(planteId){
-      return axios.delete( PLANTE_API_BASE_URL + '/' + planteId);
-  }
-  }
-
-export default new PlanteDataService();
+/*
+const deleteComments=(data)=>{
+  return axios.post(API_URL+"deleteComments",{...data},{ headers: {Authorization: 'Bearer ' + localStorage.getItem("token") }})
+}*/
+export {deletePlante,getplantes,addplantes,updateplantes};

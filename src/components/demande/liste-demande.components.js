@@ -9,44 +9,48 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import UpdateDemmande from './updateDemmande'
+import {getDemandes,DeleteDemandes} from '../../services/demande-service'
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
 });
 
-function createData(Nom, Cin, Localisation, NumeroduTelephone,City,Quantite,DateRetour,Etat) {
-  return { Nom, Cin, Localisation, NumeroduTelephone,City,Quantite,DateRetour,Etat };
-}
-
-const rows =  [
-  createData('ahmed', "59219156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-  createData('ali', "47849156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-  createData('ahmed', "15849156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-  createData('morad', "15855156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-  createData('ahmed', "23549156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-  createData('molka', "15849156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-  createData('asma', "15849156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-  createData('morad', "99949156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-  createData('hbib', "88849156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
 
 
-];
  const DemandesList=()=> {
   const [modal,setModal]=React.useState(false)
+  const [data,setData]=React.useState([])
+  const [modalData,setModalData]=React.useState({})
+
   const classes = useStyles();
-    const openModalUpdate=()=>{
+  React.useEffect(()=>{
+    getDemandes().then(res=>{
+      setData(res.data)
+    })
+  },[])
+    const openModalUpdate=(dataUpdate)=>{
+      setModalData(dataUpdate)
       setModal(e=>!e)
+    }
+    const DelteData=(id)=>{
+      DeleteDemandes(id).then(data=>{
+        getDemandes().then(res=>{
+          setData(res.data)
+        })
+      })
     }
     return (<div className={style.TableContainer}>
       {modal&&<div className={style.Modal}>
           <div className={style.close} onClick={()=>setModal(e=>!e)}></div>
-          <UpdateDemmande />
+          <UpdateDemmande {...modalData}/>
         </div>}
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
+              <TableCell align="left">id</TableCell>
               <TableCell align="left">Nom</TableCell>
               <TableCell align="left">cin</TableCell>
               <TableCell align="left">Localisation</TableCell>
@@ -56,22 +60,24 @@ const rows =  [
               <TableCell align="left">DateRetour</TableCell>
               <TableCell align="left">Etat</TableCell>
               <TableCell align="left">Update</TableCell>
-
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {data.map((row) => (
               <TableRow key={row.name}>
-  
-                <TableCell align="left">{row.Nom}</TableCell>
-                <TableCell align="left">{row.Cin}</TableCell>
-                <TableCell align="left">{row.Localisation}</TableCell>
-                <TableCell align="left">{row.NumeroduTelephone}</TableCell>
-                <TableCell align="left">{row.City}</TableCell>
-                <TableCell align="left">{row.Quantite}</TableCell>
-                <TableCell align="left">{row.DateRetour}</TableCell>
-                <TableCell align="left">{row.Etat}</TableCell>
-                <TableCell align="left"><button className={style.update} onClick={()=>openModalUpdate()}>Update</button></TableCell>
+                <TableCell align="left">{row.id}</TableCell>
+                <TableCell align="left">{row.nom}</TableCell>
+                <TableCell align="left">{row.cin}</TableCell>
+                <TableCell align="left">{row.localisation}</TableCell>
+                <TableCell align="left">{row.numTel}</TableCell>
+                <TableCell align="left">{row.city}</TableCell>
+                <TableCell align="left">{row.quantite}</TableCell>
+                <TableCell align="left">{row.dateRetour.slice(0,10)}</TableCell>
+                <TableCell align="left">{row.etat}</TableCell>
+                <TableCell align="left"><button className={style.update} onClick={()=>openModalUpdate({id:row.id,
+                  nom:row.nom,cin:row.cin,localisation:row.localisation,numTel:row.numTel,city:row.city,quantite:row.quantite,dateRetour:row.dateRetour.slice(0,10),etat:row.etat}
+                  )}>Update</button></TableCell>
+              <TableCell align="left"><button className={style.delte} style={{backgroundColor:"#dc3545"}} onClick={()=>DelteData(row.id)} >Delete</button></TableCell>
 
               </TableRow>
             ))}

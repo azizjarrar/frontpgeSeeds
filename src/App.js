@@ -9,9 +9,6 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
-import BoardUser from "./components/board-user.component";
-import BoardModerator from "./components/board-moderator.component";
-import BoardAdmin from "./components/board-admin.component";
 /******************************************************/
 
 
@@ -28,10 +25,14 @@ import ListDemande from './components/demande/liste-demande.components'
 import ListVisites from './components/visite/liste-visite.components'
 import VisitesList from './components/visite/liste-visite.components';
 import AddPlante from './components/plante/add-plante.components'
+import Contact from './components/contact/contact'
 /**************user data****************/
 import Demmandeuser from './components/userCheckState/demmande/demmande'
 import Intervenetionuser from './components/userCheckState/intervenetion/intervenetion'
 import Vistesuser from './components/userCheckState/vistes/vistes'
+
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -163,8 +164,6 @@ class App extends Component {
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/profile" component={Profile} />
-                  <Route path="/user" component={BoardUser} />
-                  <Route path="/mod" component={BoardModerator} />
                   {/***************admin****************/}
                   <Route path="/AddStaff" exact component={Addstaff} />
                   <Route path="/ListStaffs" exact component={Liststaff} />
@@ -181,6 +180,7 @@ class App extends Component {
                   <Route path="/Demmandeuser" exact component={Demmandeuser} />
                   <Route path="/Intervenetionuser" exact component={Intervenetionuser} />
                   <Route path="/Vistesuser" exact component={Vistesuser} />
+                  <Route path="/Contact/:title" exact component={Contact} />
 
 
 

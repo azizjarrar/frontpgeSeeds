@@ -1,39 +1,25 @@
-import axios from 'axios';
 
-const STAFF_API_BASE_URL = "http://localhost:8080/api/staffs";
-const API_URL = "http://localhost:8080/api/auth/";
 
-class StaffDataService {
 
-  getStaffs(){
-    return axios.get(STAFF_API_BASE_URL);
-  }
+import axios from "axios";
 
-  createStaff(staff){
-      return axios.post(STAFF_API_BASE_URL, staff);
-  }
+const API_URL = "http://localhost:8080/api/staffs/";
+//    return axiosApiInstance.post('/postnrmltopic/getSelectedTopicPosts',{...data},{ headers: {Authorization: 'Bearer ' + token }})
 
-  getStaffById(staffId){
-      return axios.get(STAFF_API_BASE_URL + '/' + staffId);
-  }
-
-  updateStaff(staff, staffId){
-      return axios.put( STAFF_API_BASE_URL + '/' + staffId, staff);
-  }
-
-  deleteStaff(staffId){
-      return axios.delete( STAFF_API_BASE_URL + '/' + staffId);
-  }
-
-  register(username, email, matricule, password, ) {
-    return axios.post(API_URL + "signup", {
-      username,
-      email,
-      matricule,
-      password
-    });
-  }
-
-  }
-
-export default new StaffDataService();
+const getStaffs=(data)=>{
+  return axios.get(API_URL+"staffs")
+}
+const addStaf=(data)=>{
+  return axios.post(API_URL+"staffs",{...data})
+}
+const updateStaf=(data,id)=>{
+  return axios.get(API_URL+"staffs/"+id)
+}
+const deleteStaf=(id)=>{
+  return axios.delete(API_URL+"staffs/"+id)
+}
+/*
+const deleteComments=(data)=>{
+  return axios.post(API_URL+"deleteComments",{...data},{ headers: {Authorization: 'Bearer ' + localStorage.getItem("token") }})
+}*/
+export {deleteStaf,getStaffs,addStaf,updateStaf};
