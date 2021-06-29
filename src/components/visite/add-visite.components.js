@@ -2,7 +2,7 @@ import React from "react";
 import style from './addVisite.module.scss'
 import {addvisites} from '../../services/visite-service'
 const AddVisite = () => {
-  const [data,setData]=React.useState({id:"1"})
+  const [data,setData]=React.useState({"etat":"en attendant"})
   const changeHandler=(e)=>{
     const {name,value}=e.target
     setData(e=>{

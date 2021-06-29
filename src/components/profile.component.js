@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
         <div className={style.userdata}>
             <div className={style.titleContainer}><img src={group}/>{currentUser.roles && currentUser.roles.map((role, index) => <> <h3 key={index}>Role : {role}</h3></>)}</div>
             <div className={style.titleContainer}><img src={email}/><h3>email : {currentUser.email}</h3></div>
-            <div className={style.titleContainer}><img src={name}/><h3>userName : {currentUser.username}</h3></div>
+            <div className={style.titleContainer}><img src={name}/><h3>Nom d'utilisateur : {currentUser.username}</h3></div>
             <div className={style.titleContainer}><img src={id}/><h3>id : {currentUser.id}</h3></div>
         </div>
         <div className={style.middelImage}>
@@ -29,12 +29,9 @@ import { Link } from "react-router-dom";
         </div>.
 
           <div className={style.checkData}>
-
-
-
-                  <button><Link to="/Vistesuser" style={{textDecoration:"none",color:"white"}}>les vistes</Link></button>
+                  <button><Link to="/Vistesuser" style={{textDecoration:"none",color:"white"}}>les vues</Link></button>
                   <button><Link to="/Demmandeuser" style={{textDecoration:"none",color:"white"}}>les demmande</Link></button>
-                  <button><Link to="/Intervenetionuser" style={{textDecoration:"none",color:"white"}}>les intervenetion</Link></button>   
+                  <button><Link to="/Intervenetionuser" style={{textDecoration:"none",color:"white"}}>les interventions</Link></button>   
           </div>
 
       </div>

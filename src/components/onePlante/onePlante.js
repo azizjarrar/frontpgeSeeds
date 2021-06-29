@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './onePlante.module.scss'
-import image from '../../planteImages/ble1.png'
+import {Link} from "react-router-dom";
 const onePlante = (props) => {
     return (
         <div className={style.container}>
@@ -8,7 +8,7 @@ const onePlante = (props) => {
               <div className={style.nameAndDescription}>
                 <h1>{props.name}</h1>
                 <p>{props.description}</p>
-                <button>Commande</button>
+                <Link to={"/Demmandeuser/"+props.id}><button>Commande</button></Link>
             </div>
         </div>
     )

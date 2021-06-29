@@ -27,6 +27,7 @@ const useStyles = makeStyles({
   const classes = useStyles();
   React.useEffect(()=>{
     getDemandes().then(res=>{
+      console.log(res.data)
       setData(res.data)
     })
   },[])
@@ -59,7 +60,13 @@ const useStyles = makeStyles({
               <TableCell align="left">Quantite</TableCell>
               <TableCell align="left">DateRetour</TableCell>
               <TableCell align="left">Etat</TableCell>
+
+              <TableCell align="left">User id</TableCell>
+              <TableCell align="left">plante id</TableCell>
+
               <TableCell align="left">Update</TableCell>
+              <TableCell align="left">delete</TableCell>
+
             </TableRow>
           </TableHead>
           <TableBody>
@@ -74,6 +81,12 @@ const useStyles = makeStyles({
                 <TableCell align="left">{row.quantite}</TableCell>
                 <TableCell align="left">{row.dateRetour.slice(0,10)}</TableCell>
                 <TableCell align="left">{row.etat}</TableCell>
+
+
+                <TableCell align="left">{row.plante}</TableCell>
+                <TableCell align="left">{row.user}</TableCell>
+
+
                 <TableCell align="left"><button className={style.update} onClick={()=>openModalUpdate({id:row.id,
                   nom:row.nom,cin:row.cin,localisation:row.localisation,numTel:row.numTel,city:row.city,quantite:row.quantite,dateRetour:row.dateRetour.slice(0,10),etat:row.etat}
                   )}>Update</button></TableCell>

@@ -18,8 +18,12 @@ const updavisites=(data,id)=>{
 const deletevisites=(id)=>{
   return axios.delete(API_URL+"visites/"+id)
 }
+const getVistesOfUser=(id)=>{
+  return axios.get(API_URL+"visites/"+id)
+
+}
 /*
 const deleteComments=(data)=>{
   return axios.post(API_URL+"deleteComments",{...data},{ headers: {Authorization: 'Bearer ' + localStorage.getItem("token") }})
 }*/
-export {getvisites,addvisites,updavisites,deletevisites};
+export {getVistesOfUser,getvisites,addvisites,updavisites,deletevisites};

@@ -177,7 +177,9 @@ class App extends Component {
                   <Route path="/listPlantes" exact component={ListPlantes} />
                   <Route path="/listInterventions" exact component={ListInterventions} />
                   {/***************userData****************/}
-                  <Route path="/Demmandeuser" exact component={Demmandeuser} />
+                  <Route path="/Demmandeuser/:id" exact component={Demmandeuser} />
+                  <Route path="/Demmandeuser/" exact component={Demmandeuser} />
+
                   <Route path="/Intervenetionuser" exact component={Intervenetionuser} />
                   <Route path="/Vistesuser" exact component={Vistesuser} />
                   <Route path="/Contact/:title" exact component={Contact} />

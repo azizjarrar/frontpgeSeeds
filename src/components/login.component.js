@@ -57,6 +57,7 @@ export default class Login extends Component {
 
           localStorage.setItem("role",data.roles[0])
           localStorage.setItem("token",data.accessToken)
+          localStorage.setItem("id",data.id)
           this.props.history.push("/");
          window.location.reload();
         },
@@ -86,7 +87,7 @@ export default class Login extends Component {
       <div className={style.container}>
       <div className="col-md-12">
         <div className="card card-container">
-          <div className={style.header}><h1>Sing In</h1></div>
+          <div className={style.header}><h1>S'identifier</h1></div>
           <Form
             onSubmit={this.handleLogin}
             ref={c => {
@@ -94,7 +95,7 @@ export default class Login extends Component {
             }}
           >
             <div className="form-group">
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username">Nom d'utilisateur</label>
               <Input
                 type="text"
                 className="form-control"
@@ -106,7 +107,7 @@ export default class Login extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Mot de passe</label>
               <Input
                 type="password"
                 className="form-control"

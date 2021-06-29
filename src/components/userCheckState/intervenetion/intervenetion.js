@@ -8,39 +8,51 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import {getinterventions,addinterventions} from '../../../services/intervention-service'
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
 });
 
-function createData(id, description) {
-  return {  id, description  };
-}
 
-const rows = [
-  createData('Frozen yoghurt', "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, whe"),
-  createData('Ice cream sandwich', "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, wheLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, whe"),
-  createData('Eclair', " Ipsum is simply dummy text of the printing and typesetting industry. Lorem "),
-
-
-];
 
 const Intervenetion = () => {
     const classes = useStyles();
+    const [data,setData]=React.useState({"user":localStorage.getItem("id")})
+    const [tableData,setTableData]=React.useState([])
+    React.useEffect(()=>{
+      getinterventions().then(res=>{
+            setTableData(res.data.filter(e=>{
+               return  e.user==localStorage.getItem("id")
+            }))
+        })
+    },[])
+    const onChangeHandler=(e)=>{
+        const {name,value}=e.target
+        setData(e=>{
+            return {...e,[name]:value}
+        })
 
+    }
+    const addterventionsFn=()=>{
+      console.log(data)
+
+      addinterventions(data).then(res=>{
+            alert("visite a été ajouté")
+        })
+    }
     return (
         <div className={style.container}>
                <div className={style.header}>
                    <h1>intervention</h1>
                </div>
                <div className={style.formContainer}>
-               <form>
+               <form onSubmit={(e)=>{addterventionsFn()}}>
 
                         <div className="form-group">
                             <label> Description: </label>
-                            <textarea rows="6"  placeholder="Description" name="description" className="form-control"
+                            <textarea onChange={e=>{onChangeHandler(e)}} required rows="6"  placeholder="Description" name="description" className="form-control"
                                 />
                         </div>
                         <button className="btn btn-primary btn-block" >Save</button>
@@ -60,7 +72,7 @@ const Intervenetion = () => {
                         </TableRow>
                         </TableHead>
                         <TableBody>
-                        {rows.map((row) => (
+                        {tableData.map((row) => (
                             <TableRow key={row.name}>
 
                             <TableCell align="left">{row.id}</TableCell>

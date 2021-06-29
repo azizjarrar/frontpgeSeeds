@@ -8,78 +8,96 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import {getDemandes,addDemandes} from '../../../services/demande-service'
+import {useParams} from "react-router-dom";
+
 const useStyles = makeStyles({
     table: {
       minWidth: 650,
     },
   });
   
-  function createData(Nom, Cin, Localisation, NumeroduTelephone,City,Quantite,DateRetour,Etat) {
-    return { Nom, Cin, Localisation, NumeroduTelephone,City,Quantite,DateRetour,Etat };
-  }
-const rows =  [
-    createData('ahmed', "59219156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-    createData('ali', "47849156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-    createData('ahmed', "15849156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-    createData('morad', "15855156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-    createData('ahmed', "23549156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-    createData('molka', "15849156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-    createData('asma', "15849156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-    createData('morad', "99949156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-    createData('hbib', "88849156", "Localisation", "NumeroduTelephone","City","Quantite","DateRetour","Etat"),
-  
-  
-  ];
+
 const Demmande = () => {
+    let { id } = useParams();
 
     
     const classes = useStyles();
+    const [tableData,setTableData]=React.useState([])
+    const [data,setData]=React.useState({"user":localStorage.getItem("id"),"plante":id??"","etat":"en attendant"})
 
+    React.useEffect(()=>{
+        getDemandes().then(res=>{
+
+            setTableData(res.data.filter(e=>{
+                return  e.user==localStorage.getItem("id")
+             }))
+        })
+    },[])
+    const changeHandler=(e)=>{
+        const {name,value}=e.target
+        
+        setData(e=>{
+            return {...e,[name]:value}
+        })
+    }
+    const addData=(e)=>{
+        //e.preventDefault();
+        addDemandes(data).then(res=>{
+            alert("demmande a été ajouté")
+
+        })
+    }
     return (
         <div className={style.container}>
                <div className={style.header}>
                    <h1>Demmandes</h1>
                </div>
                <div className={style.formContainer}>
-                        <form>
+                        <form onSubmit={(e)=>addData(e)}>
                                     <div className = "form-group">
                                         <label> Nom: </label>
-                                        <input placeholder="Nom"  name="nom" className="form-control" 
+                                        <input required onChange={(e)=>{changeHandler(e)}} placeholder="Nom"  name="nom" className="form-control" 
                                             />
                                     </div>
                                     <div className = "form-group">
                                         <label> C.I.N: </label>
-                                        <input placeholder="Carte Identite Nationale" name="cin" className="form-control" 
+                                        <input required onChange={(e)=>{changeHandler(e)}} placeholder="Carte Identite Nationale" name="cin" className="form-control" 
                                              />
                                     </div>
                                     <div className = "form-group">
                                         <label> Localisation: </label>
-                                        <input placeholder="Localisation" name="localisation" className="form-control" 
+                                        <input required onChange={(e)=>{changeHandler(e)}} placeholder="Localisation" name="localisation" className="form-control" 
                                             />
                                     </div>
                                     <div className = "form-group">
                                         <label> Numero du Telephone: </label>
-                                        <input placeholder=" Numero du Telephone"name="numTel" className="form-control" 
+                                        <input required onChange={(e)=>{changeHandler(e)}} placeholder=" Numero du Telephone"name="numTel" className="form-control" 
                                             />
                                     </div>
                                     <div className = "form-group">
                                         <label> City: </label>
-                                        <input placeholder="City" name="city" className="form-control" 
+                                        <input required onChange={(e)=>{changeHandler(e)}} placeholder="City" name="city" className="form-control" 
                                             />
                                     </div>
                                     <div className = "form-group">
                                         <label> Quantite: </label>
-                                        <input placeholder="Quantite" name="quantite" className="form-control" 
-                                            />
+                                        <input required onChange={(e)=>{changeHandler(e)}} placeholder="Quantite" name="quantite" className="form-control" 
+                                        />
+                                    </div>
+                                    <div className = "form-group">
+                                        <label> plante_id </label>
+                                        <input value={id} required onChange={(e)=>{changeHandler(e)}} placeholder="plante_id" name="plante" className="form-control" 
+                                        />
                                     </div>
                                     <div className = "form-group">
                                         <label> Date Retour: </label>
-                                        <input placeholder="Date Retour" type="date" name="dateRetour" className="form-control" 
+                                        <input required onChange={(e)=>{changeHandler(e)}} placeholder="Date Retour" type="date" name="dateRetour" className="form-control" 
                                             />
                                     </div>
   
 
-                                    <button className="btn btn-primary btn-block" style={{width:"100%"}} >Save</button>
+                                    <button  className="btn btn-primary btn-block" style={{width:"100%"}} >Save</button>
                                 </form>
                </div>
                <div className={style.header}>
@@ -101,17 +119,17 @@ const Demmande = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
+                        {tableData.map((row) => (
                         <TableRow key={row.name}>
             
-                            <TableCell align="left">{row.Nom}</TableCell>
-                            <TableCell align="left">{row.Cin}</TableCell>
-                            <TableCell align="left">{row.Localisation}</TableCell>
-                            <TableCell align="left">{row.NumeroduTelephone}</TableCell>
-                            <TableCell align="left">{row.City}</TableCell>
-                            <TableCell align="left">{row.Quantite}</TableCell>
-                            <TableCell align="left">{row.DateRetour}</TableCell>
-                            <TableCell align="left">{row.Etat}</TableCell>
+                            <TableCell align="left">{row.nom}</TableCell>
+                            <TableCell align="left">{row.cin}</TableCell>
+                            <TableCell align="left">{row.localisation}</TableCell>
+                            <TableCell align="left">{row.numTel}</TableCell>
+                            <TableCell align="left">{row.city}</TableCell>
+                            <TableCell align="left">{row.quantite}</TableCell>
+                            <TableCell align="left">{row.dateRetour.slice(0,10)}</TableCell>
+                            <TableCell align="left">{row.etat}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>
