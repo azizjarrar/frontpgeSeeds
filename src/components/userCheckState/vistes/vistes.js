@@ -59,25 +59,8 @@ const Vistes = () => {
                                 required/>
                         </div>
 
-                        <button   className="btn btn-primary btn-block" >Save</button>
-                </form>
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
+                        <button   className="btn btn-primary btn-block" >Sauvegarder</button>
+                </form>      
                 </div>
                 <div className={style.header}>
                    <h1>liste de vous Visites</h1>

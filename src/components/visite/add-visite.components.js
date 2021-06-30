@@ -38,7 +38,7 @@ const AddVisitefn=()=>{
                 />
           </div>
           <div className="form-group selectinsideAddDemmande">
-          <label> Etat </label>
+          <label> État </label>
             <select onChange={(e)=>{selectChangeHandler(e.target.value)}} className={style.selectcss}>
                 <option value="en attendant">en attendant</option>
                 <option value="acceepte">acceepte </option>

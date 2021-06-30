@@ -51,7 +51,7 @@ const Demmande = () => {
     return (
         <div className={style.container}>
                <div className={style.header}>
-                   <h1>Demmandes</h1>
+                   <h1>Demandes</h1>
                </div>
                <div className={style.formContainer}>
                         <form onSubmit={(e)=>addData(e)}>
@@ -76,7 +76,7 @@ const Demmande = () => {
                                             />
                                     </div>
                                     <div className = "form-group">
-                                        <label> City: </label>
+                                        <label> Ville: </label>
                                         <input required onChange={(e)=>{changeHandler(e)}} placeholder="City" name="city" className="form-control" 
                                             />
                                     </div>
@@ -95,9 +95,7 @@ const Demmande = () => {
                                         <input required onChange={(e)=>{changeHandler(e)}} placeholder="Date Retour" type="date" name="dateRetour" className="form-control" 
                                             />
                                     </div>
-  
-
-                                    <button  className="btn btn-primary btn-block" style={{width:"100%"}} >Save</button>
+                                    <button  className="btn btn-primary btn-block" style={{width:"100%"}} >Sauvegarder</button>
                                 </form>
                </div>
                <div className={style.header}>
@@ -112,7 +110,7 @@ const Demmande = () => {
                         <TableCell align="left">cin</TableCell>
                         <TableCell align="left">Localisation</TableCell>
                         <TableCell align="left">Numero du Telephone</TableCell>
-                        <TableCell align="left">City</TableCell>
+                        <TableCell align="left">ville</TableCell>
                         <TableCell align="left">Quantite</TableCell>
                         <TableCell align="left">DateRetour</TableCell>
                         <TableCell align="left">Etat</TableCell>

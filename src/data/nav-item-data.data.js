@@ -10,22 +10,23 @@ import * as RiIcons from "react-icons/ri";
 
 export const NavItems = [
  
-            {title: "List Users", path: "/ListUsers", icon:<CgIcons.CgUserList />, cName: 'nav-text'},
+            {title: "Liste des utilisateurs", path: "/ListUsers", icon:<CgIcons.CgUserList />, cName: 'nav-text'},
 
-            {title: "Add Staff", path: "/addstaff", icon:<AiIcons.AiOutlineUserAdd />, cName: 'nav-text'},
-            {title: "List Staffs", path: "/ListStaffs", icon:<CgIcons.CgUserList />, cName: 'nav-text'},
+            {title: "Ajouter Staff", path: "/addstaff", icon:<AiIcons.AiOutlineUserAdd />, cName: 'nav-text'},
+            {title: "Liste des Staffs", path: "/ListStaffs", icon:<CgIcons.CgUserList />, cName: 'nav-text'},
 
-            {title: "List Demandes", path: "ListDemande", icon: <BsIcons.BsListCheck />, cName: 'nav-text'},
+            {title: "Liste des demandes", path: "ListDemande", icon: <BsIcons.BsListCheck />, cName: 'nav-text'},
 
-            {title: "Add Visite", path: "/addVisite", icon:<IoIcons.IoMdAddCircle />, cName: 'nav-text'},
-            {title: "List Visites", path: "/ListVisites", icon:<FaIcons.FaClipboard />, cName: 'nav-text'},
+            {title: "Ajouter Visite", path: "/addVisite", icon:<IoIcons.IoMdAddCircle />, cName: 'nav-text'},
+            {title: "Liste des visites", path: "/ListVisites", icon:<FaIcons.FaClipboard />, cName: 'nav-text'},
  
-            {title: "Add Plante", path: "addPlante", icon:<RiIcons.RiPlantFill />, cName: 'nav-text'},
-            {title: "List Plantes", path: "listPlantes", icon: <BsIcons.BsListCheck />, cName: 'nav-text'},
-            {title: "List Interventions", path: "listInterventions", icon: <BsIcons.BsListCheck />, cName: 'nav-text'},
+            {title: "Ajouter Plante", path: "addPlante", icon:<RiIcons.RiPlantFill />, cName: 'nav-text'},
+            {title: "Liste des  Plantes", path: "listPlantes", icon: <BsIcons.BsListCheck />, cName: 'nav-text'},
+            {title: "Liste des Interventions", path: "listInterventions", icon: <BsIcons.BsListCheck />, cName: 'nav-text'},
 
-            {title: "Contact Admin", path: "/Contact/Admin", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
-            {title: "Contact AdminMet", path: "/Contact/AdminMet", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
-            {title: "Contact Chercheur", path: "/Contact/Chercheur", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
-            {title: "Contact User", path: "/Contact/User", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
+            {title: "Contacter Staff", path: "/Contact/Staff", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
+            {title: "Contacter User", path: "/Contact/User", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
+            {title: "Messages Staff", path: "/MessagesStaff", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
+            {title: "Messages User", path: "/MessagesUser", icon: <IoIcons.IoMdMail />, cName: 'nav-text'},
+
 ]

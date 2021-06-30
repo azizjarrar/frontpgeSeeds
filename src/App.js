@@ -30,8 +30,9 @@ import Contact from './components/contact/contact'
 import Demmandeuser from './components/userCheckState/demmande/demmande'
 import Intervenetionuser from './components/userCheckState/intervenetion/intervenetion'
 import Vistesuser from './components/userCheckState/vistes/vistes'
-
-
+/***************Contact*******************/
+import ContactStaf from './components/contactStaf/contactStaf'
+import ContactUser from './components/contactUser/contactUser'
 
 class App extends Component {
   constructor(props) {
@@ -132,7 +133,7 @@ class App extends Component {
               </li>}
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={this.logOut}>
-                  Logout
+                Se déconnecter
                 </a>
               </li>
             </div>
@@ -140,13 +141,13 @@ class App extends Component {
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/login"} className="nav-link">
-                  Sign In
+                S'identifier
                 </Link>
               </li>
 
               <li className="nav-item">
                 <Link to={"/register"} className="nav-link">
-                  Sign Up
+                S'inscrire
                 </Link>
               </li>
             </div>
@@ -155,12 +156,16 @@ class App extends Component {
 
 
       </div>
-      {localStorage.getItem("role")=="ROLE_ADMIN"&&<SideNav/>}
-      
+      {localStorage.getItem("role")=="ROLE_ADMIN"  &&<SideNav/>}
+      {localStorage.getItem("role")=="ROLE_CHERCHEUR"  &&<SideNav/>}
+      {localStorage.getItem("role")=="ROLE_ADMINMET"  &&<SideNav/>}
+      {localStorage.getItem("role")=="ROLE_USER"  &&<SideNav/>}
 
-              <div className="containermt3" style={localStorage.getItem("role")!="ROLE_ADMIN"?{width:"100%",marginLeft:"0px"}:{}}>
+
+              <div className="containermt3" style={localStorage.getItem("role")!="ROLE_ADMIN" && localStorage.getItem("role")!="ROLE_CHERCHEUR" && localStorage.getItem("role")!="ROLE_USER" && localStorage.getItem("role")!="ROLE_ADMINMET"?{width:"100%",marginLeft:"0px"}:{}}>
               <Switch>
-                  <Route exact path={["/", "/home"]} component={Home} />
+                  <Route exact path="/" component={Login} />
+                  <Route exact path="/home" component={Home} />
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/profile" component={Profile} />
@@ -182,8 +187,16 @@ class App extends Component {
 
                   <Route path="/Intervenetionuser" exact component={Intervenetionuser} />
                   <Route path="/Vistesuser" exact component={Vistesuser} />
-                  <Route path="/Contact/:title" exact component={Contact} />
+                  <Route exact path="/Contact/:title/:idone/:idtwo" exact component={Contact} />
+                  <Route exact path="/Contact/:title" exact component={Contact} />
 
+                  {/**************************/}
+                  <Route path="/MessagesStaff" exact component={ContactStaf} />
+                  <Route path="/MessagesUser" exact component={ContactUser} />
+
+                  
+                  
+  
 
 
               </Switch>

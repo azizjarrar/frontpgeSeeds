@@ -8,7 +8,7 @@ const onePlante = (props) => {
               <div className={style.nameAndDescription}>
                 <h1>{props.name}</h1>
                 <p>{props.description}</p>
-                <Link to={"/Demmandeuser/"+props.id}><button>Commande</button></Link>
+                <Link to={"/Demmandeuser/"+props.id}><button>Commander</button></Link>
             </div>
         </div>
     )

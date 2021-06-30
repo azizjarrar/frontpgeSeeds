@@ -43,6 +43,9 @@ const useStyles = makeStyles({
           <TableRow>
             <TableCell align="left">id</TableCell>
             <TableCell align="left">description</TableCell>
+            <TableCell align="left">user id</TableCell>
+
+            <TableCell align="left">Efface</TableCell>
 
           </TableRow>
         </TableHead>
@@ -52,7 +55,9 @@ const useStyles = makeStyles({
 
               <TableCell align="left">{row.id}</TableCell>
               <TableCell align="left">{row.description}</TableCell>
-              <TableCell align="left"><button className={style.delte} style={{backgroundColor:"#dc3545"}} onClick={()=>DelteData(row.id)} >Delete</button></TableCell>
+              <TableCell align="left">{row.user}</TableCell>
+
+              <TableCell align="left"><button className={style.delte} style={{backgroundColor:"#dc3545"}} onClick={()=>DelteData(row.id)} >Effacer</button></TableCell>
 
             </TableRow>
           ))}

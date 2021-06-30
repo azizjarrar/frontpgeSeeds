@@ -27,7 +27,7 @@ const saveDatafn=()=>{
   //Intervention(id, description )
   return(<div className={style.container}>
             <div className={style.formContainer}>
-              <div className={style.header}><h1>Add Plante</h1></div>
+              <div className={style.header}><h1>Ajouter Plante</h1></div>
             <Form  >
             <label> nomPlante </label>
               <Input type="text"   onChange={(e)=>savedata(e)} className="form-control" name="nomPlante" placeHolder="nomPlante" name="nomPlante"/>
@@ -49,7 +49,7 @@ const saveDatafn=()=>{
                  </div>              
                                     
              </Form>
-             <button onClick={()=>saveDatafn()} className="btn btn-primary btn-block">S A V E</button>
+             <button onClick={()=>saveDatafn()} className="btn btn-primary btn-block">SAUVEGARDER</button>
 
             </div>
 

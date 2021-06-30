@@ -29,7 +29,7 @@ import { Link } from "react-router-dom";
         </div>.
 
           <div className={style.checkData}>
-                  <button><Link to="/Vistesuser" style={{textDecoration:"none",color:"white"}}>les vues</Link></button>
+                  <button><Link to="/Vistesuser" style={{textDecoration:"none",color:"white"}}>les visites</Link></button>
                   <button><Link to="/Demmandeuser" style={{textDecoration:"none",color:"white"}}>les demmande</Link></button>
                   <button><Link to="/Intervenetionuser" style={{textDecoration:"none",color:"white"}}>les interventions</Link></button>   
           </div>

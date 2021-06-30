@@ -11,9 +11,6 @@ import './sideNav.css';
 
 const SideNav = () => {
 
-    //const [SideItem, setSideItem] = useState(false)
-
-    //const showSideItem = () => setSideItem(!SideItem)
     const [SideItem, setSideItem] = useState(true)
 
     const showSideItem = () => setSideItem(!SideItem)
@@ -36,8 +33,229 @@ const SideNav = () => {
                     </li>
                     
                     {NavItems.map((item, index) => {
-                        if(!(localStorage.getItem("role")=="ROLE_ADMIN" && item.title=="Contact Admin")){
-                          return (
+                        if(localStorage.getItem("role")=="ROLE_ADMIN"){
+                            if(!(localStorage.getItem("role")=="ROLE_ADMIN" && item.title=="Contact Admin")){
+                                return (
+                                  <li key={index} className={item.cName} 
+                                  id={window.location.pathname == item.path ? "active" : ""}
+                                  onClick={() => {
+                                    window.location.pathname =item.path;
+                                    
+                                  }} >
+                                      <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                  </li>
+                                )
+                              }
+                        }else if (localStorage.getItem("role")=="ROLE_CHERCHEUR"){
+                            if((localStorage.getItem("role")=="ROLE_CHERCHEUR" && item.title=="Liste des utilisateurs")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }else if((localStorage.getItem("role")=="ROLE_CHERCHEUR" && item.title=="Liste des Interventions")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }else if((localStorage.getItem("role")=="ROLE_CHERCHEUR" && item.title=="Messages Staff")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }else if((localStorage.getItem("role")=="ROLE_CHERCHEUR" && item.title=="Liste des  Plantes")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }else if((localStorage.getItem("role")=="ROLE_CHERCHEUR" && item.title=="Ajouter Plante")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }else if((localStorage.getItem("role")=="ROLE_CHERCHEUR" && item.title=="Messages User")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }
+                            else if((localStorage.getItem("role")=="ROLE_CHERCHEUR" && item.title=="Contacter Staff")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }else if((localStorage.getItem("role")=="ROLE_CHERCHEUR" && item.title=="Contacter User")){
+                              return (
+                                  <li key={index} className={item.cName} 
+                                  id={window.location.pathname == item.path ? "active" : ""}
+                                  onClick={() => {
+                                    window.location.pathname =item.path;
+                                    
+                                  }} >
+                                      <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                  </li>
+                                )
+                          }
+                        }else if(localStorage.getItem("role")=="ROLE_ADMINMET"){
+                            if((localStorage.getItem("role")=="ROLE_ADMINMET" && item.title=="Liste des demandes")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }else   if((localStorage.getItem("role")=="ROLE_ADMINMET" && item.title=="Liste des utilisateurs")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }else  if((localStorage.getItem("role")=="ROLE_ADMINMET" && item.title=="Liste des visites")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }else  if((localStorage.getItem("role")=="ROLE_ADMINMET" && item.title=="Ajouter Visite")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }else  if((localStorage.getItem("role")=="ROLE_ADMINMET" && item.title=="Liste des visites")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }
+                            
+                            
+                            else  if((localStorage.getItem("role")=="ROLE_ADMINMET" && item.title=="Messages Staff")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }else  if((localStorage.getItem("role")=="ROLE_ADMINMET" && item.title=="Messages User")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }else  if((localStorage.getItem("role")=="ROLE_ADMINMET" && item.title=="Contacter User")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }
+                            else  if((localStorage.getItem("role")=="ROLE_ADMINMET" && item.title=="Contacter Staff")){
+                                return (
+                                    <li key={index} className={item.cName} 
+                                    id={window.location.pathname == item.path ? "active" : ""}
+                                    onClick={() => {
+                                      window.location.pathname =item.path;
+                                      
+                                    }} >
+                                        <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                    </li>
+                                  )
+                            }
+                        }else{
+                          if((localStorage.getItem("role")=="ROLE_USER" && item.title=="Contacter Staff")){
+                            return (
+                                <li key={index} className={item.cName} 
+                                id={window.location.pathname == item.path ? "active" : ""}
+                                onClick={() => {
+                                  window.location.pathname =item.path;
+                                  
+                                }} >
+                                    <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                                </li>
+                              )
+                        }else  if((localStorage.getItem("role")=="ROLE_USER" && item.title=="Messages Staff")){
+                        return (
                             <li key={index} className={item.cName} 
                             id={window.location.pathname == item.path ? "active" : ""}
                             onClick={() => {
@@ -47,7 +265,21 @@ const SideNav = () => {
                                 <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
                             </li>
                           )
+                    }else  if((localStorage.getItem("role")=="ROLE_USER" && item.title=="Messages User")){
+                      return (
+                          <li key={index} className={item.cName} 
+                          id={window.location.pathname == item.path ? "active" : ""}
+                          onClick={() => {
+                            window.location.pathname =item.path;
+                            
+                          }} >
+                              <div id="icon" >{item.icon}</div> <div id="title" className={item.cName}>{item.title}</div>
+                          </li>
+                        )
+                  }
+                    
                         }
+    
                     })}
                 </ul>
             </nav>
@@ -57,62 +289,3 @@ const SideNav = () => {
 };
 
 export default SideNav;
-
-/*
-import React from "react";
-import "./sidenav.css";
-import { SidebarData } from "./SidebarData";
-
-function Sidebar() {
-  return (
-    <div className="Sidebar">
-      <ul className="SidebarList">
-        {SidebarData.map((val, key) => {
-          return (
-            <li
-              key={key}
-              className="row"
-              id={window.location.pathname == val.link ? "active" : ""}
-              onClick={() => {
-                window.location.pathname = val.link;
-               
-              }}
-          
-
-            >
-              <div id="icon">{val.icon}</div> <div id="title">{val.title}</div>
-               
-              
-
-
-            </li>
-
-
-
-
-          );
-        })}
-      </ul>
-    </div>
-  );
-}
-
-export default Sidebar;
-
-
-
-
-
-<li key={index} className={item.cName} >
-                                <Link to={item.path}>
-                                    {item.icon}
-                                    <span>{item.title}</span>
-                                </Link>
-                            </li>
-
-
-                            <Link to={item.path}>
-                                    {item.icon}
-                                    <span>{item.title}</span>
-                                </Link>
-*/

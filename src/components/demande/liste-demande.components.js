@@ -56,7 +56,7 @@ const useStyles = makeStyles({
               <TableCell align="left">cin</TableCell>
               <TableCell align="left">Localisation</TableCell>
               <TableCell align="left">Numero du Telephone</TableCell>
-              <TableCell align="left">City</TableCell>
+              <TableCell align="left">Ville</TableCell>
               <TableCell align="left">Quantite</TableCell>
               <TableCell align="left">DateRetour</TableCell>
               <TableCell align="left">Etat</TableCell>
@@ -64,8 +64,8 @@ const useStyles = makeStyles({
               <TableCell align="left">User id</TableCell>
               <TableCell align="left">plante id</TableCell>
 
-              <TableCell align="left">Update</TableCell>
-              <TableCell align="left">delete</TableCell>
+              <TableCell align="left">Mettre à jour</TableCell>
+              <TableCell align="left">Effacer</TableCell>
 
             </TableRow>
           </TableHead>
@@ -87,10 +87,10 @@ const useStyles = makeStyles({
                 <TableCell align="left">{row.user}</TableCell>
 
 
-                <TableCell align="left"><button className={style.update} onClick={()=>openModalUpdate({id:row.id,
+                <TableCell align="left"><button className={style.update} onClick={()=>openModalUpdate({id:row.id,plante:row.plante,user:row.user,
                   nom:row.nom,cin:row.cin,localisation:row.localisation,numTel:row.numTel,city:row.city,quantite:row.quantite,dateRetour:row.dateRetour.slice(0,10),etat:row.etat}
-                  )}>Update</button></TableCell>
-              <TableCell align="left"><button className={style.delte} style={{backgroundColor:"#dc3545"}} onClick={()=>DelteData(row.id)} >Delete</button></TableCell>
+                  )}>Mettre à jour                  </button></TableCell>
+              <TableCell align="left"><button className={style.delte} style={{backgroundColor:"#dc3545"}} onClick={()=>DelteData(row.id)} >Effacer</button></TableCell>
 
               </TableRow>
             ))}

@@ -128,7 +128,7 @@ export default class UpdateDemande extends Component {
                                                     value={this.state.numTel} onChange={this.changeNumTelHandler}/>
                                             </div>
                                             <div className = "form-group">
-                                                <label> City: </label>
+                                                <label> Ville: </label>
                                                 <input placeholder="City" name="city" className="form-control" 
                                                     value={this.state.city} onChange={this.changeCityHandler}/>
                                             </div>
@@ -148,8 +148,8 @@ export default class UpdateDemande extends Component {
                                                     value={this.state.etat} onChange={this.changeEtatHandler}/>
                                             </div>
 
-                                        <button className="btn btn-success" onClick={this.updateDemande}>Save</button>
-                                        <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
+                                        <button className="btn btn-success" onClick={this.updateDemande}>Sauvegarder</button>
+                                        <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Annuler</button>
                                     </form>
                                 </div>
                             </div>

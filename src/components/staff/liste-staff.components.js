@@ -8,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {getStaffs,deleteStaf} from '../../services/staff-service'
+import {getUsers,DelteUser} from '../../services/user.service'
 
 const useStyles = makeStyles({
   table: {
@@ -21,13 +21,20 @@ const useStyles = makeStyles({
   const [data,setData]=React.useState([])
 
   React.useEffect(()=>{
-    getStaffs().then(data=>{
-      setData(data.data)
+    getUsers().then(data=>{
+      setData(data.data.filter(e=>{
+        console.log(e.roles[0].name)
+        if(e.roles[0].name=="ROLE_CHERCHEUR" || e.roles[0].name=="ROLE_ADMINMET" ){
+          return e
+        }
+          
+        
+      }))
     })
   },[])
   const DelteData=(id)=>{
-    deleteStaf(id).then(data=>{
-      getStaffs().then(data=>{
+    DelteUser(id).then(data=>{
+      getUsers().then(data=>{
         setData(data.data)
       })
     })
@@ -40,11 +47,10 @@ const useStyles = makeStyles({
           <TableRow>
           <TableCell align="left">id</TableCell>
 
-            <TableCell align="left">username</TableCell>
-            <TableCell align="left">matricule</TableCell>
+            <TableCell align="left">Nom d'utilisateur</TableCell>
             <TableCell align="left">email</TableCell>
             <TableCell align="left">roles</TableCell>
-            <TableCell align="left">Delete</TableCell>
+            <TableCell align="left">Effacer</TableCell>
 
           </TableRow>
         </TableHead>
@@ -53,10 +59,11 @@ const useStyles = makeStyles({
             <TableRow key={row.name}>
               <TableCell align="left">{row.id}</TableCell>
               <TableCell align="left">{row.username}</TableCell>
-              <TableCell align="left">{row.matricule}</TableCell>
               <TableCell align="left">{row.email}</TableCell>
-              <TableCell align="left">{row.role}</TableCell>
-              <TableCell align="left"><button className={style.delte} style={{backgroundColor:"#dc3545"}} onClick={()=>DelteData(row.id)} >Delete</button></TableCell>
+              <TableCell align="left">
+            {row.roles[0].name}
+              </TableCell>
+              <TableCell align="left"><button className={style.delte} style={{backgroundColor:"#dc3545"}} onClick={()=>DelteData(row.id)} >Effacer</button></TableCell>
             </TableRow>
           ))}
         </TableBody>

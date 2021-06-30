@@ -60,11 +60,9 @@ const VisitesList =()=> {
             <TableCell align="left">Date</TableCell>
             <TableCell align="left">Description</TableCell>
             <TableCell align="left">Etat</TableCell>
-            <TableCell align="left">user id</TableCell>
-
-            <TableCell align="left">Update</TableCell>
-            <TableCell align="left">delete</TableCell>
-
+            <TableCell align="left">identifiant d'utilisateur</TableCell>
+            <TableCell align="left">Mettre à jour</TableCell>
+            <TableCell align="left">effacer</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -75,9 +73,8 @@ const VisitesList =()=> {
               <TableCell align="left">{row.description}</TableCell>
               <TableCell align="left">{row.etat}</TableCell>
               <TableCell align="left">{row.user}</TableCell>
-
-              <TableCell align="left"><button className={style.update} onClick={()=>openModalUpdate({id:row.id,date:row.date.slice(0,10),description:row.description,etat:row.etat})}>Update</button></TableCell>
-              <TableCell align="left"><button className={style.delte} style={{backgroundColor:"#dc3545"}} onClick={()=>DelteData(row.id)} >Delete</button></TableCell>
+              <TableCell align="left"><button className={style.update} onClick={()=>openModalUpdate({user:row.user,id:row.id,date:row.date.slice(0,10),description:row.description,etat:row.etat})}>Mettre à jour</button></TableCell>
+              <TableCell align="left"><button className={style.delte} style={{backgroundColor:"#dc3545"}} onClick={()=>DelteData(row.id)} >effacer</button></TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -51,7 +51,7 @@ const  UpdateDemmande =(props)=>  {
                                             />
                                     </div>
                                     <div className = "form-group">
-                                        <label> City: </label>
+                                        <label> Ville: </label>
                                         <input onChange={(e)=>changeHandler(e)} value={data.city}disabled placeholder="City" name="city" className="form-control" 
                                             />
                                     </div>
@@ -74,7 +74,7 @@ const  UpdateDemmande =(props)=>  {
                                         <option value="refuser">refuser</option>
                                         </select>
                                         </div>
-                                        <button onClick={()=>update()} className="btn btn-primary btn-block" style={{width:"90%"}} >Update</button>
+                                        <button onClick={()=>update()} className="btn btn-primary btn-block" style={{width:"90%"}} >Mettre à jour</button>
 
                                 </form>
 

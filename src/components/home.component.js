@@ -6,7 +6,6 @@ import {getplantes} from '../services/plante-service'
    const [data,setData]=React.useState([])
   React.useEffect(()=>{
     getplantes().then(res=>{
-      console.log(res)
       setData(res.data)
     })
     
@@ -20,7 +19,7 @@ import {getplantes} from '../services/plante-service'
             <div className={style.seedsContainer}>
               <div className={style.left}>
               {data.map(e=>{
-                if(e.type=="1"){
+                if(e.type=="2"){
                   return <OneImage image={e.image	} description={e.description} name={e.nomPlante} id={e.id}/>
                 }
               })}
@@ -28,7 +27,7 @@ import {getplantes} from '../services/plante-service'
               </div>
               <div className={style.right}>
               {data.map(e=>{
-                if(e.type=="2"){
+                if(e.type=="1"){
                   return <OneImage image={e.image	} description={e.description} name={e.nomPlante} id={e.id}/>
                 }
               })}

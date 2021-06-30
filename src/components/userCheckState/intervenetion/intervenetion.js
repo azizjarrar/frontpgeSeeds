@@ -55,7 +55,7 @@ const Intervenetion = () => {
                             <textarea onChange={e=>{onChangeHandler(e)}} required rows="6"  placeholder="Description" name="description" className="form-control"
                                 />
                         </div>
-                        <button className="btn btn-primary btn-block" >Save</button>
+                        <button className="btn btn-primary btn-block" >Sauvegarder</button>
                 </form>
                 </div>
                 <div className={style.header}>

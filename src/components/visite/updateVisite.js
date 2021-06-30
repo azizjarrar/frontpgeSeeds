@@ -19,7 +19,7 @@ const UpdateVisite = (props) => {
   }
   const updatefn=()=>{
     updavisites(data,props.id).then(data=>{
-      console.log(data)
+      window.location.reload()
     })
   }
     return (
@@ -47,7 +47,7 @@ const UpdateVisite = (props) => {
             </div>
   
           </form>
-          <button onClick={()=>updatefn()} className="btn btn-primary btn-block" >Update</button>
+          <button onClick={()=>updatefn()} className="btn btn-primary btn-block" >Mettre à jour</button>
 
         </div>
       </div>

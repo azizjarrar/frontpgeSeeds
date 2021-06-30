@@ -12,11 +12,11 @@ const getUsers=(data)=>{
 const getUserById=(id)=>{
   return axios.get(API_URL+"users/"+id)
 }
-const updateUser=(data)=>{
-  return axios.get(API_URL+"users")
+const updateUser=(data,id)=>{
+  return axios.put(API_URL+"users/"+id,{...data})
 }
-const DelteUser=(data)=>{
-  return axios.get(API_URL+"users")
+const DelteUser=(id)=>{
+  return axios.delete(API_URL+"users/"+id)
 }
 /*
 const deleteComments=(data)=>{
