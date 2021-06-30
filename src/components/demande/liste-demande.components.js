@@ -27,7 +27,6 @@ const useStyles = makeStyles({
   const classes = useStyles();
   React.useEffect(()=>{
     getDemandes().then(res=>{
-      console.log(res.data)
       setData(res.data)
     })
   },[])

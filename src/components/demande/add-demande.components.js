@@ -12,7 +12,7 @@ const  AddDemande =()=>  {
     }
     const saveData=()=>{
         addDemandes(data).then(res=>{
-            console.log(res)
+            alert("demande a éte ajouté")
         })
     }
     return (

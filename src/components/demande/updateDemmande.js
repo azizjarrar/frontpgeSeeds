@@ -28,7 +28,7 @@ const  UpdateDemmande =(props)=>  {
     return (
         <div className={style.container}>
               <div className={style.formContainer}>
-                    <div className={style.header}><h1>Update Demmnde</h1></div>
+                    <div className={style.header}><h1>Mettre a jour  la  Demmnde</h1></div>
                                 <form>
                                     <div className = "form-group">
                                         <label> Nom: </label>

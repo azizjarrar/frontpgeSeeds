@@ -25,7 +25,7 @@ const UpdateVisite = (props) => {
     return (
         <div className={style.container}>
         <div className={style.formContainer}>
-          <div className={style.header}><h1>Update</h1></div>
+          <div className={style.header}><h1>Mettre à jour visite</h1></div>
           <form>
             <div className="form-group">
               <label> Date: </label>

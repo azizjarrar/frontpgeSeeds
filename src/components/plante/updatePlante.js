@@ -26,7 +26,7 @@ const UpdatePlante = (props) => {
     return (
         <div className={style.container}>
         <div className={style.formContainer}>
-          <div className={style.header}><h1>UPDATE Plante</h1></div>
+          <div className={style.header}><h1>Mettre à jour Plante</h1></div>
         <Form  >
         <label> nomPlante </label>
           <Input type="text"   value={data.nomPlante} onChange={(e)=>savedata(e)} className="form-control" name="nomPlante" placeHolder="nomPlante" name="nomPlante"/>
@@ -40,14 +40,10 @@ const UpdatePlante = (props) => {
               <select onChange={(e)=>changeHandlerSelect(e)} value={data.type_id} className={style.selectcss}>
                   <option value="1">variétés de blé dur </option>
                   <option value="2">variétés d’orge</option>
-
               </select>
-             </div>              
-
-                                      
+             </div>                                      
          </Form>
          <button onClick={()=>UpdateDate()} className="btn btn-primary btn-block">UPDATE </button>
-
         </div>
 
 

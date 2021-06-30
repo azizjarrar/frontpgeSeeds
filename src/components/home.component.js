@@ -8,8 +8,9 @@ import {getplantes} from '../services/plante-service'
     getplantes().then(res=>{
       setData(res.data)
     })
-    
+
   },[])
+
     return (
       <div className={style.container}>
         <div className={style.Titles}>
